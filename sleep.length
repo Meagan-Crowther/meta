@@ -1,0 +1,22 @@
+#Sleep Length
+sub.sleep.hour=metagen(TE,
+                     SeTE,
+                     data = Subjective_Sleep_length,
+                     studlab = paste(Author),
+                     comb.fixed = FALSE,
+                     comb.random = TRUE,
+                     method.tau = "SJ",
+                     hakn = TRUE,
+                     prediction = TRUE,
+                     sm = "SMD")
+sub.sleep.hour
+
+type.sub=update.meta(sub.sleep.hour, 
+                     byvar=type, 
+                     comb.random = TRUE, 
+                     comb.fixed = FALSE)
+type.sub
+
+forest(type.sub,
+       layout = "RevMan5",
+       digits.sd = 2)
